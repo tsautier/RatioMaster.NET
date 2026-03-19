@@ -1122,6 +1122,7 @@ namespace RatioForge
                     if (text1 == "")
                     {
                         AddLogLine("This tracker doesnt seem to support scrape");
+                        return;
                     }
 
                     Uri uri1 = new Uri(text1);
@@ -1169,15 +1170,14 @@ namespace RatioForge
 
         internal string getScrapeUrlString(TorrentInfo torrentInfo)
         {
-            string urlString;
-            urlString = torrentInfo.tracker;
-            int index = urlString.LastIndexOf("/");
-            if (urlString.Substring(index + 1, 8).ToLower() != "announce")
+            string urlString = torrentInfo.tracker;
+            int index = urlString.ToLower().LastIndexOf("announce");
+            if (index == -1)
             {
                 return "";
             }
 
-            urlString = urlString.Substring(0, index + 1) + "scrape" + urlString.Substring(index + 9);
+            urlString = urlString.Substring(0, index) + "scrape" + urlString.Substring(index + 8);
             string hash = HashUrlEncode(torrentInfo.hash, currentClient.HashUpperCase);
             if (urlString.Contains("?"))
             {
