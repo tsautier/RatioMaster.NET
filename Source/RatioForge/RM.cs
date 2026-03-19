@@ -762,7 +762,6 @@ namespace RatioForge
             serverUpdateTimer.Start();
             remWork = 0;
             if ((string)cmbStopAfter.SelectedItem == "After time:") RemaningWork.Start();
-            requestScrapeFromTracker(currentTorrent);
         }
 
         private void stopTimerAndCounters()
