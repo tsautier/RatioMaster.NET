@@ -1634,7 +1634,12 @@ namespace RatioForge
                     }
                 }
 
-                string cmd = "GET " + path + " " + currentClient.HttpProtocol + "\r\n" + currentClient.Headers.Replace("{host}", host) + "\r\n";
+                string headers = currentClient.Headers.Replace("{host}", host).TrimEnd();
+                if (!headers.ToLower().Contains("connection:"))
+                {
+                    headers += "\r\nConnection: close";
+                }
+                string cmd = "GET " + path + " " + currentClient.HttpProtocol + "\r\n" + headers + "\r\n\r\n";
         AddLogLine("======== Sending Command to Tracker ========");
         AddLogLine(cmd);
 
