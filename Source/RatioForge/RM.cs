@@ -998,7 +998,7 @@ namespace RatioForge
                         }
                     }
 
-                    return false;
+                    return true;
                 }
                 else
                 {
@@ -1264,20 +1264,15 @@ namespace RatioForge
             }
             catch (Exception e)
             {
-                AddLogLine(e.Message);
-                SetCountersCallback d = updateCounters;
-                Invoke(d, new object[] { torrentInfo });
+                AddLogLine("UpdateCounters Error: " + e.Message);
             }
         }
 
         private static string SetPrecision(string data, int prec)
         {
-            float pow = (float)Math.Pow(10, prec);
-            float wdata = float.Parse(data);
-            wdata = wdata * pow;
-            int curr = (int)wdata;
-            wdata = curr / pow;
-            return wdata.ToString();
+            if (float.TryParse(data, out float parsed))
+                return parsed.ToString("F" + prec);
+            return "0.00";
         }
 
         int Seeders = -1;
