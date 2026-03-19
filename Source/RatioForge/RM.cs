@@ -928,7 +928,7 @@ namespace RatioForge
                     {
                         foreach (string key in trackerResponse.Dict.Keys)
                         {
-                            if (key != "failure reason" && key != "peers")
+                            if (key != "failure reason" && key != "peers" && key != "peers6")
                             {
                                 AddLogLine(key + ": " + BEncode.String(trackerResponse.Dict[key]));
                             }

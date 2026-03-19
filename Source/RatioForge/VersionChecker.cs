@@ -6,9 +6,9 @@ namespace RatioForge
 
     public class VersionChecker
     {
-        public const string LocalVersion = "1.0.4";
-        public const string PublicVersion = "1.0.4";
-        public const string ReleaseDate = "18-01-2026";
+        public const string LocalVersion = "1.0.5";
+        public const string PublicVersion = "1.0.5";
+        public const string ReleaseDate = "19-03-2026";
         private const string ProgramPageVersion = "https://raw.githubusercontent.com/tsautier/RatioForge/master/version.txt";
 
         private readonly string userAgent;

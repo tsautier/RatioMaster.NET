@@ -5,6 +5,15 @@ All notable changes to RatioForge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2026-03-19
+
+### Fixed
+- **Network**: Fixed Cloudflare HTTPS tracker connection hanging caused by missing `Connection: close` and Keep-Alive loops.
+- **Network**: Fixed private tracker scrape URL generation when the passkey follows `/announce/`.
+- **Network**: Repaired `sendEventToTracker` return logic so it correctly registers successful updates and initiates periodic background timer ticks.
+- **UI**: Resolved silent `StackOverflowException` crash due to asynchronous `updateCounters` infinite fallback loops on exception.
+- **UI**: Fixed bug in `SetPrecision` crashing the app when parsing highly precise fractional ratios with native culture decimal separators (e.g. `2.9E-5`).
+
 ## [1.0.4] - 2026-01-18
 
 ### Fixed
